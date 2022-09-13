@@ -195,19 +195,20 @@ def download_images(app, env):
         else status_iterator
     )
     msg = "Downloading remote images..."
+    logger.info(f"Checking for new remote images to download")
     nb_images = len(env.video_remote_images)
     for src in iterator(env.video_remote_images, msg, brown, nb_images):
 
         dst = Path(app.outdir) / env.video_remote_images[src]
         if not dst.is_file():
-            logger.info(f"{src} -> {dst} (downloading)")
+            # logger.info(f"{src} -> {dst} (downloading)")
             with open(dst, "wb") as f:
                 try:
                     f.write(requests.get(src).content)
                 except requests.ConnectionError:
                     logger.info(f'Cannot download "{src}"')
-        else:
-            logger.info(f"{src} -> {dst} (already in cache)")
+        # else:
+            # logger.info(f"{src} -> {dst} (already in cache)")
 
 
 def configure_image_download(app):
