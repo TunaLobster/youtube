@@ -200,14 +200,14 @@ def download_images(app, env):
 
         dst = Path(app.outdir) / env.video_remote_images[src]
         if not dst.is_file():
-            logger.info(f"{src} -> {dst} (downloading)")
+            # logger.info(f"{src} -> {dst} (downloading)")
             with open(dst, "wb") as f:
                 try:
                     f.write(requests.get(src).content)
                 except requests.ConnectionError:
                     logger.info(f'Cannot download "{src}"')
-        else:
-            logger.info(f"{src} -> {dst} (already in cache)")
+        # else:
+            # logger.info(f"{src} -> {dst} (already in cache)")
 
 
 def configure_image_download(app):
