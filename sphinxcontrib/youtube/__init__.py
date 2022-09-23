@@ -1,7 +1,7 @@
 """Sphinx "youtube" extension"""
 from . import utils, vimeo, youtube
 
-__version__ = "100.2.0"
+__version__ = "100.2.1"
 
 
 def setup(app):
